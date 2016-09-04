@@ -1,0 +1,36 @@
+<div class="container col-xs-12 col-md-12">
+  <h1>Guess a number application</h1>
+  <guess-list-mobile></guess-list-mobile>
+  <div class="col-md-6">
+    <form class="form-guess form-inline" method="post">
+      <div class="form-group">
+        <label for="guess">Guess a number:</label>
+        <input type="number" class="input-guess form-control" ng-model="guess" name="guess" min="1" max="999">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="submit-guess btn btn-primary" value="Submit a number" ng-click="update()">
+      </div>
+    </form>
+    <span class="message text-info">
+      {{message}}
+    </span>
+  </div>
+  <div class="col-md-6" ng-show="!mobileDetechtion">
+    <timeline>
+      <timeline-event ng-repeat="guess in guessList" side="left">
+        <timeline-badge class="{{guess.badgeClass}}">
+          <i class="glyphicon {{guess.badgeIconClass}}"></i>
+        </timeline-badge>
+        <timeline-panel class="{{guess.badgeClass}}">
+          <timeline-heading>
+            <h4>{{guess.number}}</h4>
+          </timeline-heading>
+          <p>{{guess.message}}</p>
+        </timeline-panel>
+      </timeline-event>
+    </timeline>
+  </div>
+  <span class="guess-number" ng-hide="debugMode">
+    {{guessNumber}}
+  </span>
+</div>
